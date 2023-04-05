@@ -25,7 +25,7 @@ app.put('/teams/:id', (req, res) => {
   const { id } = req.params;
 
   if (!req.body.name || !req.body.initials) {
-    return res.status(400).json({ message: 'Dados invalidos!' });
+    return res.status(422).json({ message: 'Dados invalidos!' });
   }
 
   const updatedTeam = teams.find((team) => team.id === Number(id));
@@ -42,7 +42,7 @@ app.patch('/teams/:id', (req, res) => {
   const { id } = req.params;
 
   if (!req.body.name) {
-    return res.status(400).json({ message: 'Nome de time invalido!' });
+    return res.status(422).json({ message: 'Nome do time é obrigatorio!' });
   }
 
   const updatedTeam = teams.find((team) => team.id === Number(id));
